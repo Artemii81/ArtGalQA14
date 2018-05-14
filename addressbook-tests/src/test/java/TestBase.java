@@ -5,8 +5,6 @@ import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.Assert.assertTrue;
-
 public class TestBase {
     private WebDriver driver;
     private boolean acceptNextAlert = true;
@@ -46,7 +44,7 @@ public class TestBase {
     }
 
     public void goToContactPage() {
-        driver.findElement(By.xpath("//input[@value='Login']")).click();
+        driver.findElement(By.linkText("home")).click();
     }
 
     public void login(String user, String password) {
@@ -56,6 +54,7 @@ public class TestBase {
         driver.findElement(By.name("pass")).click();
         driver.findElement(By.name("pass")).clear();
         driver.findElement(By.name("pass")).sendKeys(password);
+        driver.findElement(By.xpath("//input[@value='Login']")).click();
     }
 
     public void siteOpen(String url) {
@@ -75,6 +74,40 @@ public class TestBase {
         driver.findElement(By.name("selected[]")).click();
 
     }
+    public void submitGroupCreation() {
+        driver.findElement(By.name("submit")).click();
+    }
+
+    public void fillGroupForm(String name, String header, String footer) {
+        driver.findElement(By.name("group_name")).click();
+        driver.findElement(By.name("group_name")).clear();
+        driver.findElement(By.name("group_name")).sendKeys(name);
+
+        driver.findElement(By.name("group_header")).click();
+        driver.findElement(By.name("group_header")).clear();
+        driver.findElement(By.name("group_header")).sendKeys(header);
+
+        driver.findElement(By.name("group_footer")).click();
+        driver.findElement(By.name("group_footer")).clear();
+        driver.findElement(By.name("group_footer")).sendKeys(footer);
+    }
+
+    public void initGroupCreation() {
+        driver.findElement(By.name("new")).click();
+    }
+
+    public void goToGroupPage() {
+        driver.findElement(By.linkText("groups")).click();
+    }
+
+    public void deleteGroup() {
+        driver.findElement(By.name("delete")).click();
+    }
+
+    public void selectFirstGroup() {
+        driver.findElement(By.name("selected[]")).click();
+    }
+
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
         driver.quit();
@@ -112,5 +145,7 @@ public class TestBase {
             acceptNextAlert = true;
         }
     }
+
+
 
 }
