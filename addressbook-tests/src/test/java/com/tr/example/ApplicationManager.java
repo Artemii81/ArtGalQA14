@@ -1,42 +1,39 @@
+package com.tr.example;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class ApplicationManager {
     private WebDriver driver;
     private boolean acceptNextAlert = true;
 
-    @BeforeClass(alwaysRun = true)
-    public void setUp() throws Exception {
+    public void start() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        siteOpen("http://localhost/addressbook/");
-        login("admin", "secret");
     }
 
     public void submitContactCreation() {
         driver.findElement(By.xpath("(//input[@name='submit'])")).click();
     }
 
-    public void fillContactForms(String name, String secondName, String telNamber, String mail) {
+    public void fillContactForms(ContactData contactData) {
         driver.findElement(By.name("firstname")).click();
         driver.findElement(By.name("firstname")).clear();
-        driver.findElement(By.name("firstname")).sendKeys(name);
+        driver.findElement(By.name("firstname")).sendKeys(contactData.getName());
 
         driver.findElement(By.name("lastname")).click();
         driver.findElement(By.name("lastname")).clear();
-        driver.findElement(By.name("lastname")).sendKeys(secondName);
+        driver.findElement(By.name("lastname")).sendKeys(contactData.getSecondName());
 
         driver.findElement(By.name("mobile")).click();
         driver.findElement(By.name("mobile")).clear();
-        driver.findElement(By.name("mobile")).sendKeys(telNamber);
+        driver.findElement(By.name("mobile")).sendKeys(contactData.getTelNamber());
 
         driver.findElement(By.name("email")).click();
         driver.findElement(By.name("email")).clear();
-        driver.findElement(By.name("email")).sendKeys(mail);
+        driver.findElement(By.name("email")).sendKeys(contactData.getMail());
     }
 
     public void initContactCreation() {
@@ -61,35 +58,35 @@ public class TestBase {
         driver.get(url);
     }
 
-
     public void deletContact() {
         driver.findElement(By.xpath("//input[@value='Delete']")).click();
-    //    assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
-    //    closeAlertAndGetItsText();
+        //    assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+        //    closeAlertAndGetItsText();
         if (isAlertPresent()){driver.switchTo().alert().accept();
-         }
+        }
     }
 
     public void selectFirstContact() {
         driver.findElement(By.name("selected[]")).click();
 
     }
+
     public void submitGroupCreation() {
         driver.findElement(By.name("submit")).click();
     }
 
-    public void fillGroupForm(String name, String header, String footer) {
+    public void fillGroupForm(GroupData group) {
         driver.findElement(By.name("group_name")).click();
         driver.findElement(By.name("group_name")).clear();
-        driver.findElement(By.name("group_name")).sendKeys(name);
+        driver.findElement(By.name("group_name")).sendKeys(group.getName());
 
         driver.findElement(By.name("group_header")).click();
         driver.findElement(By.name("group_header")).clear();
-        driver.findElement(By.name("group_header")).sendKeys(header);
+        driver.findElement(By.name("group_header")).sendKeys(group.getHeader());
 
         driver.findElement(By.name("group_footer")).click();
         driver.findElement(By.name("group_footer")).clear();
-        driver.findElement(By.name("group_footer")).sendKeys(footer);
+        driver.findElement(By.name("group_footer")).sendKeys(group.getFooter());
     }
 
     public void initGroupCreation() {
@@ -107,12 +104,12 @@ public class TestBase {
     public void selectFirstGroup() {
         driver.findElement(By.name("selected[]")).click();
     }
+
     public void initGroupModification() {
         driver.findElement(By.name("edit")).click();
     }
 
-    @AfterClass(alwaysRun = true)
-    public void tearDown() throws Exception {
+    public void stop() {
         driver.quit();
     }
 
@@ -149,9 +146,17 @@ public class TestBase {
         }
     }
 
-
     public void confirmGroupModification() {
         driver.findElement(By.name("update")).click();
 
+    }
+
+    public int getGroupCount() {
+
+     return driver.findElements(By.name("selected[]")).size();
+    }
+
+    public int getContactCount() {
+        return driver.findElements(By.name("selected[]")).size();
     }
 }
