@@ -107,6 +107,9 @@ public class TestBase {
     public void selectFirstGroup() {
         driver.findElement(By.name("selected[]")).click();
     }
+    public void initGroupModification() {
+        driver.findElement(By.name("edit")).click();
+    }
 
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
@@ -147,5 +150,8 @@ public class TestBase {
     }
 
 
+    public void confirmGroupModification() {
+        driver.findElement(By.name("update")).click();
 
+    }
 }
