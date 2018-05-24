@@ -71,8 +71,13 @@ public class ContactHelper extends HelperBase {
 
     public void createContact() {
         initContactCreation();
-        fillContactForms(new ContactData("Serg", "Goreli", "555 55 55", "serg@mail.com"));
+        fillContactForms(new ContactData()
+                .whithfName("Serg")
+                .whithlName("Goreli")
+                .whithTelNamber("555 55 55")
+                .whithMail("serg@mail.com"));
         submitContactCreation();
 
     }
+
 }

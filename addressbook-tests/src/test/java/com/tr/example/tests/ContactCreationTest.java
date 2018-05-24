@@ -14,7 +14,13 @@ public class ContactCreationTest extends TestBase {
 
 
         app.getContactHelper().initContactCreation();
-        app.getContactHelper().fillContactForms(new ContactData("Serg", "Goreli", "555 55 55", "serg@mail.com"));
+        app.getContactHelper().fillContactForms(new ContactData()
+                .whithfName("Serg")
+                .whithlName("Goreli")
+                .whithTelNamber("555 55 55")
+                .whithMail("serg@mail.com")
+                .whithAdress("TA"))
+        ;
         app.getContactHelper().submitContactCreation();
         int after= app.getContactHelper().getContactCount();
         Assert.assertEquals(after,before+1);

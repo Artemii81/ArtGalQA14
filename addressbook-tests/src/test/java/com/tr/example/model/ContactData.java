@@ -1,24 +1,48 @@
 package com.tr.example.model;
 
 public class ContactData {
-    private final String name;
-    private final String secondName;
-    private final String telNamber;
-    private final String mail;
+    private  String fName;
+    private  String lName;
+    private  String telNamber;
+    private  String mail;
+    private String adress;
 
-    public ContactData(String name, String secondName, String telNamber, String mail) {
-        this.name = name;
-        this.secondName = secondName;
-        this.telNamber = telNamber;
-        this.mail = mail;
+    public ContactData whithfName(String fName) {
+        this.fName = fName;
+        return this;
     }
 
+    public ContactData whithlName(String lName) {
+        this.lName = lName;
+        return this;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public ContactData whithAdress(String adress) {
+        this.adress = adress;
+        return this;
+    }
+
+    public ContactData whithTelNamber(String telNamber) {
+        this.telNamber = telNamber;
+        return this;
+    }
+
+    public ContactData whithMail(String mail) {
+        this.mail = mail;
+        return this;
+    }
+
+
     public String getName() {
-        return name;
+        return fName;
     }
 
     public String getSecondName() {
-        return secondName;
+        return lName;
     }
 
     public String getTelNamber() {

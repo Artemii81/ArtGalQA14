@@ -14,7 +14,10 @@ public class GropeCreationTest extends TestBase {
         int before = app.getGroupHelper().getGroupCount();
         // driver.findElement(By.xpath("(//input[@name='new'])[2]")).click();
         app.getGroupHelper().initGroupCreation();
-        app.getGroupHelper().fillGroupForm(new GroupData("name", "header", "footer"));
+        app.getGroupHelper().fillGroupForm(new GroupData()
+                .withName("name")
+                .withHeader("header")
+                .withFooter("footer"));
         app.getGroupHelper().submitGroupCreation(By.name("submit"));
         app.getNavigationHelper().goToGroupPage();
         int after = app.getGroupHelper().getGroupCount();
