@@ -9,7 +9,11 @@ public class ContactDeletionTest extends TestBase {
     public void testContactDeletion(){
         //methods openSite & login are located in parent class TestBase
         app.getNavigationHelper().goToContactPage();
+        if(!app.getContactHelper().isThereAContact()){
+            app.getContactHelper().createContact();
+        };
         int before = app.getContactHelper().getContactCount();
+
         app.getContactHelper().selectFirstContact();
         app.getContactHelper().deletContact();
         int after = app.getContactHelper().getContactCount();

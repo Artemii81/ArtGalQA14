@@ -11,6 +11,8 @@ public class ContactCreationTest extends TestBase {
         //methods openSite & login are located in parent class TestBase
         app.getNavigationHelper().goToContactPage();
         int before= app.getContactHelper().getContactCount();
+
+
         app.getContactHelper().initContactCreation();
         app.getContactHelper().fillContactForms(new ContactData("Serg", "Goreli", "555 55 55", "serg@mail.com"));
         app.getContactHelper().submitContactCreation();

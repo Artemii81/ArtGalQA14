@@ -10,6 +10,9 @@ public class GroupModificationTest extends TestBase {
     public void testGroupModification(){
         //methods openSite & login are located in parent class TestBase
         app.getNavigationHelper().goToGroupPage();
+        if (!app.getGroupHelper().isThereAGroup()) {
+            app.getGroupHelper().createGroup();
+        }
         int before = app.getGroupHelper().getGroupCount();
         app.getGroupHelper().selectFirstGroup();
         app.getGroupHelper().initGroupModification();
