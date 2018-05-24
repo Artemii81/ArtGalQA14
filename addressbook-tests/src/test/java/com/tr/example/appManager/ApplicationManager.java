@@ -4,6 +4,9 @@ import com.tr.example.model.ContactData;
 import com.tr.example.model.GroupData;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.BrowserType;
 import org.testng.internal.GroupsHelper;
 
 import java.util.concurrent.TimeUnit;
@@ -14,9 +17,22 @@ public class ApplicationManager {
     private NavigationHelper navigationHelper;
     private WebDriver driver;
     private boolean acceptNextAlert = true;
+    private String browser;
 
-      public void start() {
-        driver = new ChromeDriver();
+    public ApplicationManager(String browser) {
+
+        this.browser = browser;
+    }
+
+    public void start() {
+          if(browser.equals(BrowserType.CHROME)){
+              driver = new ChromeDriver();
+          } else if(browser.equals(BrowserType.FIREFOX)){
+              driver=new FirefoxDriver();
+          } else if(browser.equals(BrowserType.IE)){
+              driver = new InternetExplorerDriver();
+          }
+
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         siteOpen("http://localhost/addressbook/");
         login("admin", "secret");
