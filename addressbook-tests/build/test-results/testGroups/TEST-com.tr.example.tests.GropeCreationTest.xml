@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tr.example.tests.GropeCreationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-05-26T19:14:27" hostname="Asus" time="5.924">
+  <properties/>
+  <testcase name="testGropeCreation" classname="com.tr.example.tests.GropeCreationTest" time="5.924"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -61,7 +61,9 @@ public class GroupHelper extends HelperBase {
         returnToGroupPage();
     }
 
-    private void returnToGroupPage() {
-        click(By.linkText("groups"));
+    public void returnToGroupPage() {
+      //  click(By.linkText("groups"));
+        click(By.xpath("//a[@href='group.php'][contains(text(),'group page')]"));
+
     }
 }

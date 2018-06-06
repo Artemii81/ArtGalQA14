@@ -17,8 +17,14 @@ public class GroupDeletionTest extends TestBase {
         int before = app.getGroupHelper().getGroupCount();
 
         app.getGroupHelper().selectFirstGroup();
+
         app.getGroupHelper().deleteGroup();
-        app.getNavigationHelper().goToGroupPage();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        app.getGroupHelper().returnToGroupPage();
         int after = app.getGroupHelper().getGroupCount();
         Assert.assertEquals(after, before - 1);
 

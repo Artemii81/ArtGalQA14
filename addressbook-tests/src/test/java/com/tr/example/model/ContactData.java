@@ -1,18 +1,42 @@
 package com.tr.example.model;
 
+import java.io.File;
+
 public class ContactData {
     private  String fName;
     private  String lName;
     private  String telNamber;
     private  String mail;
     private String adress;
+    private String group;
+    private File photo;
 
-    public ContactData whithfName(String fName) {
+    public String getGroup() {
+        return group;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
+     public File getPhoto() {
+        return photo;
+    }
+
+    public ContactData withPhoto(File photo) {
+        this.photo = photo;
+        return this;
+    }
+
+
+
+    public ContactData withfName(String fName) {
         this.fName = fName;
         return this;
     }
 
-    public ContactData whithlName(String lName) {
+    public ContactData withlName(String lName) {
         this.lName = lName;
         return this;
     }
@@ -21,17 +45,17 @@ public class ContactData {
         return adress;
     }
 
-    public ContactData whithAdress(String adress) {
+    public ContactData withAdress(String adress) {
         this.adress = adress;
         return this;
     }
 
-    public ContactData whithTelNamber(String telNamber) {
+    public ContactData withTelNamber(String telNamber) {
         this.telNamber = telNamber;
         return this;
     }
 
-    public ContactData whithMail(String mail) {
+    public ContactData withMail(String mail) {
         this.mail = mail;
         return this;
     }
@@ -51,5 +75,14 @@ public class ContactData {
 
     public String getMail() {
         return mail;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "fName='" + fName + '\'' +
+                ", lName='" + lName + '\'' +
+                ", telNamber='" + telNamber + '\'' +
+                '}';
     }
 }

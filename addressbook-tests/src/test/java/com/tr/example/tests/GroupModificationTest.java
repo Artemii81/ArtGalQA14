@@ -15,10 +15,25 @@ public class GroupModificationTest extends TestBase {
         }
         int before = app.getGroupHelper().getGroupCount();
         app.getGroupHelper().selectFirstGroup();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         app.getGroupHelper().initGroupModification();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
      //   app.getGroupHelper().fillGroupForm(new GroupData("new_name", "new_header", ""));
         app.getGroupHelper().confirmGroupModification();
-        app.getNavigationHelper().goToGroupPage();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        app.getGroupHelper().returnToGroupPage();
         int after = app.getGroupHelper().getGroupCount();
         Assert.assertEquals(after,before);
 

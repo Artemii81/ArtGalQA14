@@ -3,6 +3,7 @@ package com.tr.example.appManager;
 import com.tr.example.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class ContactHelper extends HelperBase {
 
@@ -32,7 +33,13 @@ public class ContactHelper extends HelperBase {
         driver.findElement(By.name("mobile")).sendKeys(contact.getTelNamber());
 */
       type(By.name("email"), contact.getMail());
-
+        type(By.name("address"), contact.getAdress());
+     // type(By.name("photo"),contact.getPhoto().getAbsolutePath());
+       attach(By.name("photo"),contact.getPhoto());
+       if(isElementPresent(By.xpath("//*[@name='new_group']"))) {
+           new Select(driver.findElement(By.xpath("//*[@name='new_group']")))
+                   .selectByVisibleText(contact.getGroup());
+       }
       /*
         driver.findElement(By.name("email")).click();
         driver.findElement(By.name("email")).clear();
@@ -72,10 +79,10 @@ public class ContactHelper extends HelperBase {
     public void createContact() {
         initContactCreation();
         fillContactForms(new ContactData()
-                .whithfName("Serg")
-                .whithlName("Goreli")
-                .whithTelNamber("555 55 55")
-                .whithMail("serg@mail.com"));
+                .withfName("Serg")
+                .withlName("Goreli")
+                .withTelNamber("555 55 55")
+                .withMail("serg@mail.com"));
         submitContactCreation();
 
     }

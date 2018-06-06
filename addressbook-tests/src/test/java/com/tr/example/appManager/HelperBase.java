@@ -2,6 +2,8 @@ package com.tr.example.appManager;
 
 import org.openqa.selenium.*;
 
+import java.io.File;
+
 public class HelperBase {
     protected WebDriver driver;
     private boolean acceptNextAlert = true;
@@ -15,6 +17,12 @@ public class HelperBase {
             click(locator);
             driver.findElement(locator).clear();
             driver.findElement(locator).sendKeys(text);
+        }
+    }
+
+    public void attach (By locator, File file) {
+        if(file!=null) {
+               driver.findElement(locator).sendKeys(file.getAbsolutePath());
         }
     }
 

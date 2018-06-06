@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tr.example.tests.GroupDeletionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-05-26T19:14:17" hostname="Asus" time="10.489">
+  <properties/>
+  <testcase name="testGropDeletion" classname="com.tr.example.tests.GroupDeletionTest" time="10.489"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
